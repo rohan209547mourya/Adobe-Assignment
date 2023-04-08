@@ -1,0 +1,105 @@
+form {
+    margin: 100px;
+    width: 30%;
+    margin: auto;
+    border: 1px solid #E2E8F0;
+    padding: 30px;
+    margin-top: 2%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.input_field {
+    position: relative;
+    width: 250px;
+    height: 44px;
+    line-height: 44px;
+    margin: 20px;
+}
+
+.input_field>span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+span i {
+    font-size: 14px;
+    color: #d3d3d3;
+}
+
+span i:hover {
+    color: #f7a600;
+}
+
+label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #d3d3d3;
+    transition: 0.2s all;
+    cursor: text;
+}
+
+input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid #d3d3d3;
+    box-shadow: none;
+    color: #111;
+}
+
+.invalid_input {
+    outline: 0;
+    color: #ff2300;
+    border-color: #ff2300;
+    margin-left: 10px;
+}
+
+input:focus,
+input:valid {
+    border-color: #f7a600;
+}
+
+input:focus~label,
+input:valid~label {
+    font-size: 14px;
+    top: -24px;
+    color: #f7a600;
+}
+
+.form_btn {
+
+    margin: 20px;
+    width: 250px;
+    height: 44px;
+    line-height: 44px;
+    background: #f7a600;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s all;
+    text-align: center;
+}
+
+.form_btn:hover {
+    background: #eb8406;
+}
