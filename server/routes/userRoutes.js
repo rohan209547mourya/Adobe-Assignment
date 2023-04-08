@@ -5,8 +5,10 @@ const {
     getUserByIdHandler,
     updateUserHandler,
     deleteUserByIdHandler,
-    loginUserHandler
-} = require('../controller/userController')
+    loginUserHandler,
+    addProfileImageHandler
+} = require('../controller/userController');
+const authorizarion = require('../middleware/authorization');
 
 
 
@@ -44,6 +46,15 @@ router.get('/:id', getUserByIdHandler);
  * @description Update user by id
  */
 router.put('/:id', updateUserHandler);
+
+
+/**
+ * @route /users/:id/profile-image
+ * @method PUT 
+ * @description Add Profile image
+ */
+router.put('/:id/profile-image', authorizarion('user') ,addProfileImageHandler);
+
 
 
 /**

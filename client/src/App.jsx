@@ -4,12 +4,15 @@ import RootLayout from './components/RootLayout';
 import LoginForm from './components/authentication/LoginForm';
 import SignupForm from './components/authentication/SignupForm';
 import Logout from './components/Logout';
+import Error from './components/Error';
+import Profile from './components/profile/Profile';
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <RootLayout />,
+        errorElement: <Error />,
         children: [
             {
                 index: true,
@@ -27,6 +30,10 @@ const router = createBrowserRouter([
                 path: 'logout',
                 element: <Logout />
             },
+            {
+                path: 'profile',
+                element: <Profile />
+            }
         ]
     },
 

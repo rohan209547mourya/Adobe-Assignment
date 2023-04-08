@@ -90,21 +90,21 @@ const Signup = () => {
 
     return (
     <div>
-        <form onSubmit={handleSubmitRequest}>
+        <form onSubmit={handleSubmitRequest} className={classes.signupForm}>
             <div>
                 <h1 className={classes.title}>Create Account</h1>
             </div>
             <div>
                 <div className={classes.input_field}>
-                    <input type="text" id="name" required  onChange={inputFieldHandler} />
+                    <input className={classes.input} type="text" id="name" required  onChange={inputFieldHandler} />
                     <label htmlFor="name">Your Name:</label>
                 </div>
                 <div className={classes.input_field}>
-                    <input type="text" id="email" required onChange={inputFieldHandler}/>
+                    <input className={classes.input} type="text" id="email" required onChange={inputFieldHandler}/>
                     <label htmlFor="email">Your Email:</label>
                 </div>
                 <div className={classes.input_field}>
-                    <input type={togglePasswordVisible ? "text" : "password"} id="password" onFocus={() => setPasswordValidation(false)} onChange={inputFieldHandler}  required />
+                    <input className={classes.input} type={togglePasswordVisible ? "text" : "password"} id="password" onFocus={() => setPasswordValidation(false)} onChange={inputFieldHandler}  required />
                     <label htmlFor="password">Your Password:</label>
                     <span onClick={showPasswordHandler}>
                         {
@@ -115,7 +115,7 @@ const Signup = () => {
                     </span>
                 </div>
                 <div className={classes.input_field}>
-                    <input type={togglePasswordVisible ? "text" : "password"} id="confirmPassword" onChange={inputFieldHandler} required  />
+                    <input type={togglePasswordVisible ? "text" : "password"} id="confirmPassword" onChange={inputFieldHandler} required className={classes.input}  />
                     <label htmlFor="confirmPassword">Confirm Password:</label>
                     <span onClick={showPasswordHandler}>
                         {

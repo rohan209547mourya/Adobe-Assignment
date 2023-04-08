@@ -26,7 +26,7 @@ const NaviagationBar = () => {
                         <NavLink to='/' className={({isActive}) => isActive ? classes.active : null} end>Posts</NavLink>
                     </li>
                     <li>
-                        <NavLink to='profile' className={({isActive}) => isActive ? classes.active : null} end>Profile</NavLink>
+                        <NavLink to={Cookies.get('x-auth-token') ? 'profile' : 'login'} className={({isActive}) => isActive ? classes.active : null} end>Profile</NavLink>
                     </li>
                 {
                     Cookies.get('x-auth-token') ? 

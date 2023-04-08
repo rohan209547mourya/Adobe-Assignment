@@ -57,6 +57,7 @@ const createUserHandler = async (req, res, next) => {
                 name: user.name,
                 email: user.email,
                 bio: user.bio,
+                role: user.role,
             }
         }
     })
@@ -107,12 +108,37 @@ const loginUserHandler = async (req, res, next) => {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
+                role: user.role,
                 bio: user.bio,
+                profileImage: user.profileImage
             }
         }
     })
 }
 
+
+// Add profile image handler
+const addProfileImageHandler = async (req, res, next) => {
+    
+    const user = await User.findByIdAndUpdate(req.user._id, {
+        profileImage: req.body.profileImage
+    }, {new: true});
+
+    res.status(200).json({
+        message: "Profile image has been added successfully",
+        code: 200,
+        data: {
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+                bio: user.bio,
+                profileImage: user.profileImage
+            }
+        }
+    })
+}
 
 
 // Get User by id handler
@@ -136,6 +162,7 @@ module.exports = {
     getUserByIdHandler,
     updateUserHandler,
     deleteUserByIdHandler,
-    loginUserHandler
+    loginUserHandler,
+    addProfileImageHandler
 }
 

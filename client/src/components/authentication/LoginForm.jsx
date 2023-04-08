@@ -42,6 +42,7 @@ const LoginForm = () => {
 
         if(res?.code === 200) {
             Cookie.set('x-auth-token', res.token);
+            console.log(res.data);
             navigate('/')
         }
         else{
@@ -62,17 +63,17 @@ const LoginForm = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={classes.loginForm}>
                 <div>
                     <h1 className={classes.title}>Login</h1>
                 </div>
                 <div>
                     <div className={classes.input_field}>
-                        <input type="text" id="email" required  onChange={handleInputData}/>
+                        <input className={classes.input} type="text" id="email" required  onChange={handleInputData}/>
                         <label htmlFor="email">Your Email:</label>
                     </div>
                     <div className={classes.input_field}>
-                        <input type={togglePasswordVisible ? "text" : "password"} id="password" onChange={handleInputData} required />
+                        <input className={classes.input} type={togglePasswordVisible ? "text" : "password"} id="password" onChange={handleInputData} required />
                         <label htmlFor="password">Your Password:</label>
                         <span onClick={showPasswordHandler}>
                             {

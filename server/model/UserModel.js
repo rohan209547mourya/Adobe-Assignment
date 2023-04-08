@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require('joi')
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -37,6 +38,9 @@ const userSchema = new mongoose.Schema({
         required: true,
         enum: ['user', 'admin'],
         default: 'user',
+    },
+    profileImage:{
+        type: String,
     }
 });
 
