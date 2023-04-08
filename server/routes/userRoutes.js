@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
-
-
-const { createUserHandler, getUserByIdHandler, updateUserHandler, deleteUserByIdHandler } = require('../controller/userController')
-
-
+const {
+    createUserHandler,
+    getUserByIdHandler,
+    updateUserHandler,
+    deleteUserByIdHandler,
+    loginUserHandler
+} = require('../controller/userController')
 
 
 
@@ -13,7 +15,17 @@ const { createUserHandler, getUserByIdHandler, updateUserHandler, deleteUserById
  * @method POST
  * @description Create new user
  */
-router.post('/user', createUserHandler);
+router.post('/', createUserHandler);
+
+
+
+/**
+ * @route /users/auth
+ * @method POST
+ * @description Login user
+ */
+router.post('/auth/login', loginUserHandler)
+
 
 
 
@@ -22,7 +34,7 @@ router.post('/user', createUserHandler);
  * @method GET
  * @description Get user by id
  */
-router.get('/user/:id', getUserByIdHandler);
+router.get('/:id', getUserByIdHandler);
 
 
 
@@ -31,7 +43,7 @@ router.get('/user/:id', getUserByIdHandler);
  * @method PUT
  * @description Update user by id
  */
-router.put('/user/:id', updateUserHandler);
+router.put('/:id', updateUserHandler);
 
 
 /**
@@ -39,4 +51,6 @@ router.put('/user/:id', updateUserHandler);
  * @method DELETE
  * @description Delete user by id
  */
-router.delete('/user/:id', deleteUserByIdHandler);
+router.delete('/:id', deleteUserByIdHandler);
+
+module.exports = router

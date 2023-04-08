@@ -3,7 +3,7 @@ import Cookie from 'js-cookie'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import classes from '../styles/signup.module.css'
-import {fetchFromAPI} from '../../helper/fetchFromAPI'
+import { fetchFromAPI } from '../../helper/fetchFromAPI'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -100,7 +100,7 @@ const Signup = () => {
                     <label htmlFor="name">Your Name:</label>
                 </div>
                 <div className={classes.input_field}>
-                    <input type="email" id="email" required onChange={inputFieldHandler}/>
+                    <input type="text" id="email" required onChange={inputFieldHandler}/>
                     <label htmlFor="email">Your Email:</label>
                 </div>
                 <div className={classes.input_field}>

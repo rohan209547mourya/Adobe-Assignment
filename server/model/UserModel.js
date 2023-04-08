@@ -31,7 +31,6 @@ const userSchema = new mongoose.Schema({
     },
     updated_at: {
         type: Date,
-        default: Date.now,
     },
     role: {
         type: String,
@@ -43,7 +42,7 @@ const userSchema = new mongoose.Schema({
 
 
 userSchema.methods.generateAuthToken = function () {
-    const token = jwt.sign({ _id: this._id, name: this.name, role: this.role }, process.env.JWT_SECERT)
+    const token = jwt.sign({ _id: this._id, name: this.name, role: this.role }, process.env.JWT_SECERT || "temp_key")
     return token
 }
 
