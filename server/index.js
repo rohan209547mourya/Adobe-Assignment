@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const connectDB = require('./config/connectDB');
+const userRoutes = require('./routes/userRoutes')
 
 
 
@@ -8,6 +9,7 @@ const connectDB = require('./config/connectDB');
  * @description Middleware functions calls
  */
 app.use(express.json());
+app.use('/users', userRoutes);
 
 
 
