@@ -10,6 +10,15 @@
     user-select: none;
 }
 
+
+.info {
+    padding-left: 10rem;
+}
+
+.info div {
+    text-align: left;
+}
+
 .cover_photo {
     position: relative;
     background: url(https://i.imgur.com/jxyuizJ.jpeg);
@@ -31,21 +40,24 @@
 
 .profile_name {
     font-size: 20px;
-    margin: 15px 0 0 -250px;
     color: black;
 }
 
 .about {
     margin-top: 10px;
     font-size: 14px;
-    margin-left: -155px;
     line-height: 1.6;
+}
+
+.profile_name span i {
+    margin-left: 2%;
+    color: black;
 }
 
 
 
 .btn {
-    margin: 10px 20px;
+    margin: 10px 20px 10px 0px;
     background: #f7a600;
     padding: 10px 25px;
     border-radius: 3px;

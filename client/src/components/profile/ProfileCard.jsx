@@ -13,6 +13,14 @@ const ProfileCard = () => {
     const [imageUrl, setImageUrl] = useState("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNr-hLDsgpEryNGNOs_yJIg4lYCqjBS_ck5dMDD5kBUw&usqp=CAU&ec=48665699");
     const [isLoading, setIsLoading] = useState(false);
 
+    const [user, setUser] = useState({
+        id: null,
+        name: null,
+        email: null,
+        bio: null,
+        profileImage: null
+    })
+
 
   
     const handleImageChange = async (event) => {
@@ -66,16 +74,48 @@ const ProfileCard = () => {
     }
 
 
+    useEffect(() => {
+        const fetchUserData = async () => {
+
+            const res = await fetchFromAPI('users', 'GET', null, {
+                'x-auth-token' : Cookies.get('x-auth-token')
+            })
+
+            if (res.code === 200) {
+                const data = res.data.user;
+                setUser({
+                    id: data._id,
+                    name: data.name,
+                    email: data.email,
+                    bio: data.bio,
+                    profileImage: data.profileImage
+                })
+            }
+
+        }
+
+        fetchUserData();
+    }, [])
+
+
     return (
         <>  
             <div className={classes.card}>
                 <div className={classes.cover_photo}>
-                    <img src={imageUrl} className={classes.profile} />
+                    <img src={user.profileImage || imageUrl} className={classes.profile} />
                 </div>
-                <h3 className={classes.profile_name}>James Carson</h3>
-                <p className={classes.about}>UI/UX Designer Front End Developer</p>
-                <button className={classes.btn}>Edit Profile</button>
-                <button className={classes.btn} onClick={() => setShowPopup(true)}>Change Image</button>
+                <div className={classes.info}>
+                    <div>
+                        <h3 className={classes.profile_name}>{ user.name || "James Carson"} {"    "} <span><i class="fa-solid fa-gear"></i></span></h3>
+                    </div>
+                    <div>
+                        <p className={classes.about}>{user.bio || "Add Your Bio"}</p>
+                    </div>
+                    <div>
+                        <button className={classes.btn}>Edit Profile</button>
+                        <button className={classes.btn} onClick={() => setShowPopup(true)}>Change Image</button>
+                    </div>
+                </div>
                 {
                     showPopup && (
                     <div className={classes.popup}>

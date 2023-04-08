@@ -36,7 +36,7 @@ router.post('/auth/login', loginUserHandler)
  * @method GET
  * @description Get user by id
  */
-router.get('/:id', getUserByIdHandler);
+router.get('/',authorizarion('user'), getUserByIdHandler);
 
 
 

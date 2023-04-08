@@ -108,7 +108,6 @@ const loginUserHandler = async (req, res, next) => {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
-                role: user.role,
                 bio: user.bio,
                 profileImage: user.profileImage
             }
@@ -132,7 +131,6 @@ const addProfileImageHandler = async (req, res, next) => {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
-                role: user.role,
                 bio: user.bio,
                 profileImage: user.profileImage
             }
@@ -143,6 +141,23 @@ const addProfileImageHandler = async (req, res, next) => {
 
 // Get User by id handler
 const getUserByIdHandler = async (req, res) => {
+
+    const user = await User.findById(req.user._id);
+
+    res.status(200).json({
+        message: "User has been fetched successfully",
+        code: 200,
+        data: {
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                bio: user.bio,
+                profileImage: user.profileImage
+            }
+        }
+    })
+
 }
 
 
