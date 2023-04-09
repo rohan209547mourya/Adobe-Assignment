@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
+require('dotenv').config();
 
-
-const MONGO_URI = process.env.MONGO_URI || "mongodb://0.0.0.0:27017/social_media_db"
+const MONGO_URI = "mongodb+srv://rohanmourya671:rohan9899@taskplannerclustor.3mryuzl.mongodb.net/?retryWrites=true&w=majority"
 const connectDB = async () => {
     try {
         const conn = await mongoose.connect(MONGO_URI, {
