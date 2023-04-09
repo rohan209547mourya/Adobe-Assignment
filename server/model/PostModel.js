@@ -21,7 +21,6 @@ const postSchema = new mongoose.Schema({
     },
     updated_at: {
         type: Date,
-        default: Date.now,
     },
     likes: {
         type: Number,
@@ -44,5 +43,8 @@ const validatePost = (post) => {
 
 const Post = mongoose.model('Post', postSchema);
 
-module.exports = Post;
+module.exports = {
+    Post,
+    validatePost,
+};
 
