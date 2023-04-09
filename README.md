@@ -38,7 +38,7 @@ The app allows users to sign up, log in, create posts, like posts.
  To access admin routes you should login with following Emailid and password.
  
  Email: admin_socailhive@gmail.com
- Password: admin_socailhive_pass
+ Password: admin_socailhive
 
  - GET `/analytics/users`: Retrieve the total number of users.
  - GET `/analytics/users/top-active`: Retrieve the top 5 most active users, based on the number of posts.
