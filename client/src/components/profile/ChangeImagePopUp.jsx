@@ -3,11 +3,12 @@ import Spinner from './Spinner';
 import { fetchFromAPI } from '../../helper/fetchFromAPI'
 import Cookies from 'js-cookie'
 import classes from '../styles/profile.module.css'
+import { useNavigate } from 'react-router-dom';
 
 
 const ChangeImagePopUp = ({setShowPopup, setImageUrl, user}) => {
 
-    
+    const navigate = useNavigate();    
     const [image, setImage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -18,6 +19,9 @@ const ChangeImagePopUp = ({setShowPopup, setImageUrl, user}) => {
             'Content-Type': 'application/json',
             'x-auth-token' : Cookies.get('x-auth-token')
         })
+
+    
+        setImageUrl(res.data.user.profileImage)
     }
 
 

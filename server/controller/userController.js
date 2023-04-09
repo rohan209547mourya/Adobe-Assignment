@@ -119,7 +119,6 @@ const loginUserHandler = async (req, res, next) => {
 // Add profile image handler
 const addProfileImageHandler = async (req, res, next) => {
     
-    console.log(req);
 
     let user = await User.findById(req.params.id);
 
@@ -146,7 +145,7 @@ const addProfileImageHandler = async (req, res, next) => {
                 name: user.name,
                 email: user.email,
                 bio: user.bio,
-                profileImage: user.profileImage
+                profileImage: user.profileImage,
             }
         }
     })
@@ -157,8 +156,6 @@ const addProfileImageHandler = async (req, res, next) => {
 const getUserByIdHandler = async (req, res) => {
 
     const user = await User.findById(req.user._id);
-
-    console.log(user.profileImage);
     
     res.status(200).json({
         message: "User has been fetched successfully",
@@ -169,7 +166,8 @@ const getUserByIdHandler = async (req, res) => {
                 name: user.name,
                 email: user.email,
                 bio: user.bio,
-                profileImage: user.profileImage
+                profileImage: user.profileImage,
+                likedPosts: user.likedPosts
             }
         }
     })

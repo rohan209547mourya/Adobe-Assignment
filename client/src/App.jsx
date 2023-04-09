@@ -6,6 +6,8 @@ import SignupForm from './components/authentication/SignupForm';
 import Logout from './components/Logout';
 import Error from './components/Error';
 import Profile from './components/profile/Profile';
+import PostCard from './components/posts/PostCard';
+import Posts from './components/posts/Posts';
 
 
 const router = createBrowserRouter([
@@ -16,7 +18,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <div>Posts</div>
+                element: <Posts />
             },
             {
                 path: 'login',
@@ -33,7 +35,7 @@ const router = createBrowserRouter([
             {
                 path: 'profile',
                 element: <Profile />
-            }
+            },
         ]
     },
 

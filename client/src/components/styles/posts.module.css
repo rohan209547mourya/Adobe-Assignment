@@ -1,0 +1,72 @@
+.posts {
+    width: 70%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination_el {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.pagination_el li {
+    margin-right: 10px;
+}
+
+.activePage button {
+    color: #fff;
+    background-color: #f7a600;
+    border-color: #f7a600;
+}
+
+.PageDisabled button {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+.actions {
+    color: #6c757d;
+}
+
+.actions button {
+    color: #6c757d;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 10px;
+    width: 70%;
+    margin: auto;
+}
+
+.header div span i {
+    color: black;
+    font-size: 2rem;
+}
+
+
+.header div span i:hover {
+    cursor: pointer;
+}

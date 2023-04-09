@@ -227,3 +227,10 @@ h3 span i:hover {
     color: black;
     font-size: 2rem;
 }
+
+.profile_posts {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}

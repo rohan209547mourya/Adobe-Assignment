@@ -71,7 +71,7 @@ const ProfileCard = () => {
         }
 
         fetchUserData();
-    }, [setUser])
+    }, [setUser, imageUrl, setImageUrl])
 
 
     return (

@@ -1,0 +1,109 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.post_card_header {
+    display: flex;
+    flex-direction: row;
+    float: left;
+    align-items: center;
+    border-bottom: 1px solid #E2E8F0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+.post_card_header div:first-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+}
+
+.action span {
+    margin-left: 10px;
+}
+
+.action span:hover {
+    cursor: pointer;
+}
+
+.action span i {
+    font-size: 1.2rem;
+}
+
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.username {
+    margin-left: 10px;
+    line-height: 5px;
+}
+
+.post_content p {
+    padding: 5px;
+}
+
+.liked i {
+    color: #ff0000;
+}
+
+.options {
+    position: absolute;
+    z-index: 1;
+    transition: ease-in-out .3s;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    right: -50px;
+    top: 20px;
+}
+
+.options>div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.options>div>span:first-child {
+    margin-right: 10px;
+}
+
+.options>div>span>i {
+    color: black;
+}
+
+
+
+.options>div:last-child {
+    margin-top: 10px;
+}
+
+.options>div:last-child>span {
+    color: red;
+}

@@ -7,7 +7,8 @@ const {
     updatePostContentByIdHandler,
     deletePostByIdHandler,
     incrementLikeCountByIdHandler,
-    decrementLikeCountByIdHandler
+    decrementLikeCountByIdHandler,
+    getAllPostsByUserIdHandler
 } = require('../controller/postController');
 const authorizarion = require('../middleware/authorization');
 
@@ -73,6 +74,16 @@ router.post('/:id/like', authorizarion('user'), incrementLikeCountByIdHandler);
  * @description decrease post like count by 1, the like count should not go below zero
  */
 router.post('/:id/unlike', authorizarion('user'), decrementLikeCountByIdHandler);
+
+
+
+
+/**
+ * @route /posts/user
+ * @method GET
+ * @description get all posts made by a user
+ */
+router.get('/user/all', authorizarion('user'), getAllPostsByUserIdHandler);
 
 
 module.exports = router

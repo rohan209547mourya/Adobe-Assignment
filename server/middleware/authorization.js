@@ -1,7 +1,7 @@
 const jsonwebtoken = require('jsonwebtoken');
 require('dotenv').config();
 
-const auth = role => {
+const auth = requiredRole => {
     return (req, res, next) => {
 
         const token = req.header("x-auth-token");
@@ -14,7 +14,7 @@ const auth = role => {
         try {
             
             const decoded = jsonwebtoken.verify(token, process.env.JWT_SECERT || "temp_key")
-            if(role && role !== decoded.role) return res.status(403).json({
+            if(requiredRole && requiredRole !== decoded.role) return res.status(403).json({
                 message: "Access denied. You are not authorized to access this resource!",
                 code: 403
             })

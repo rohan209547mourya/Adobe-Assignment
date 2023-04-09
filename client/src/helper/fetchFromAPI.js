@@ -1,3 +1,5 @@
+import Cookie from 'js-cookie'
+
 const URL = "http://localhost:8080";
 
 export const fetchFromAPI = async (path, method = 'GET', body = null, headers = null) => {
@@ -16,7 +18,31 @@ export const fetchFromAPI = async (path, method = 'GET', body = null, headers = 
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error(error);
-        return null;
+        console.error(error.message)
     }
 };
+
+
+export const createNewPost = async (body, edit=false) => {  
+
+    if(!edit) {
+
+        const res = await fetchFromAPI('posts', 'POST',body, {
+            'x-auth-token' : Cookie.get('x-auth-token'),
+        } );
+    
+        return res;
+
+    } 
+
+    else{
+
+
+        const res = await fetchFromAPI(`posts/${body._id}`, 'PUT',body, {
+            'x-auth-token' : Cookie.get('x-auth-token'),
+        } );
+    
+        return res;
+
+    }
+}

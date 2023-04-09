@@ -42,7 +42,6 @@ const LoginForm = () => {
 
         if(res?.code === 200) {
             Cookie.set('x-auth-token', res.token);
-            console.log(res.data);
             navigate('/')
         }
         else{
