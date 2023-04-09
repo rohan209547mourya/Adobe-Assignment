@@ -84,6 +84,7 @@ const PostCard = ({ post }) => {
         showErrorMessage(res.message)
       }
     } catch (err) { 
+      showErrorMessage(err.message);
     }
 
   }

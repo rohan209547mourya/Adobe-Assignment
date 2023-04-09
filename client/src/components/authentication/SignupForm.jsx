@@ -66,18 +66,26 @@ const Signup = () => {
             password: formData.password,
         }
 
-        const res = await fetchFromAPI('users', 'POST', requestData);
-        
-        if(res.code === 201) {
+        try {
             
-            const {token} = res;
-            Cookie.set('x-auth-token', token);
-            navigate('/');
+            const res = await fetchFromAPI('users', 'POST', requestData);
+        
+            if(res?.code === 201) {
+                
+                const {token} = res;
+                Cookie.set('x-auth-token', token);
+                navigate('/');
+            }
+            else{
+                showErrorMessage(res.message);
+                setIsSubmitting(false);
+            }
+
+        } catch (err) {
+            
+            showErrorMessage(err.message);
         }
-        else{
-            showErrorMessage(res.message);
-            setIsSubmitting(false);
-        }
+       
     }
 
     const showErrorMessage = (message) => {

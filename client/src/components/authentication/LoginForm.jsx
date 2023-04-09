@@ -38,22 +38,30 @@ const LoginForm = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        const res = await fetchFromAPI('users/auth/login', 'POST', formData);
+        try {
 
-        if(res?.code === 200) {
-            Cookie.set('x-auth-token', res.token);
-            if(res.data.user.role === 'admin') {
-                navigate('/admin/sdfsdf82n0n0283nlsd')
+            const res = await fetchFromAPI('users/auth/login', 'POST', formData);
+
+            if(res?.code === 200) {
+                Cookie.set('x-auth-token', res.token);
+                if(res.data.user.role === 'admin') {
+                    navigate('/admin/sdfsdf82n0n0283nlsd')
+                }
+                else{
+                    navigate('/')
+                }
+
             }
             else{
-                navigate('/')
+                showErrorMessage(res?.message);
+                setIsSubmitting(false);
             }
-
+                
+        } catch (err) {
+            
+            showErrorMessage(err.message);
         }
-        else{
-            showErrorMessage(res?.message);
-            setIsSubmitting(false);
-        }
+        
     }
 
 

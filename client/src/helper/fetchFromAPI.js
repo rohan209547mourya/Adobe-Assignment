@@ -7,6 +7,7 @@ export const fetchFromAPI = async (path, method = 'GET', body = null, headers = 
     try {
         const requestOptions = {
             method: method,
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
                 ...(headers || {})

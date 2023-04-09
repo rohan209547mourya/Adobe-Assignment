@@ -38,7 +38,7 @@ const CreatePostPopUp = ({postId, setShowPopup, popUpHeading, setPosts, posts}) 
                 }
 
             } catch (err) {
-                
+                console.log(err.message);
             } 
         }
         else{
@@ -57,7 +57,7 @@ const CreatePostPopUp = ({postId, setShowPopup, popUpHeading, setPosts, posts}) 
                     setShowPopup(false)
                 }
             } catch (err) {
-                
+                console.log(err.message);
             }
         }
     }

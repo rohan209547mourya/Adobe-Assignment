@@ -47,23 +47,32 @@ const ChangeImagePopUp = ({setShowPopup, setImageUrl, user}) => {
         data.append('upload_preset', 'profile');
         data.append('cloud_name', 'ddo7x0lvr');
 
-        const response = await fetch('https://api.cloudinary.com/v1_1/ddo7x0lvr/image/upload', {
+        try {
+
+            const response = await fetch('https://api.cloudinary.com/v1_1/ddo7x0lvr/image/upload', {
                 method: 'POST',
                 body: data
             })
         
-        response.json()
-            .then(res => {
-                setImageUrl(res.url);
-                sendImageUpdateRequest(res.url);
-                
-                setIsLoading(false);
-                setShowPopup(false);
-            })
-            .catch(err => {
-                console.log(err);
-            }
-        )
+            response.json()
+                .then(res => {
+                    setImageUrl(res.url);
+                    sendImageUpdateRequest(res.url);
+                    
+                    setIsLoading(false);
+                    setShowPopup(false);
+                })
+                .catch(err => {
+                    console.log(err);
+                }
+            )
+            
+        } catch (err) {
+            
+            console.log(err.message);
+        }
+
+        
     }
 
 
