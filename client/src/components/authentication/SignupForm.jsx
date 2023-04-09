@@ -77,7 +77,7 @@ const Signup = () => {
                 navigate('/');
             }
             else{
-                showErrorMessage(res.message);
+                showErrorMessage(res?.message);
                 setIsSubmitting(false);
             }
 

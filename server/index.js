@@ -16,7 +16,7 @@ app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
 app.use('/analytics', adminRoutes);
 app.use(cors({
-    origin:"https://socialhive.vercel.app"
+    origin:"*"
 }));
 app.use(errorHandler);
 
