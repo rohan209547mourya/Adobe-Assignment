@@ -61,6 +61,18 @@ const createNewPostHandler = async(req, res) => {
 
 // Get all posts
 const getAllPostsHandler = async(req, res) => {
+
+    const posts = await Post.find()
+                            .sort({ created_at: -1 })
+                                .populate('user_id', 'name profileImage');;
+
+    res.status(200).json({
+        message: "All posts have been fetched successfully",
+        code: 200,
+        data: {
+            posts: posts
+        }
+    })
 }
 
 
