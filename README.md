@@ -17,7 +17,7 @@ Once the server and client are running, you can access the app by navigating to 
 The app allows users to sign up, log in, create posts, like posts.
 
 ## Routes
-# User Related 
+### User Related 
  - POST /users: Create a new user.
  - POST /users/auth/login Login a user with email and password
  - GET /users/{id}: Retrieve a user by id.
@@ -26,7 +26,7 @@ The app allows users to sign up, log in, create posts, like posts.
  - GET /analytics/users: Retrieve the total number of users.
  - GET /analytics/users/top-active: Retrieve the top 5 most active users, based on the number of posts.
 
-# Posts Routes
+### Posts Routes
  - POST /posts: Create a new post. The request should include the user_id.
  - GET /posts/{id}: Retrieve a post by id.
  - PUT /posts/{id}: Update a post's content by id.
