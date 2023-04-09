@@ -18,20 +18,29 @@ The app allows users to sign up, log in, create posts, like posts.
 
 ## Routes
 ### User Related 
- - POST /users: Create a new user.
- - POST /users/auth/login Login a user with email and password
- - GET /users/{id}: Retrieve a user by id.
- - PUT /users/{id}: Update a user's name or bio by id.
- - DELETE /users/{id}: Delete a user by id.
- - GET /analytics/users: Retrieve the total number of users.
- - GET /analytics/users/top-active: Retrieve the top 5 most active users, based on the number of posts.
+ - POST `/users`: Create a new user.
+ - POST `/users/auth/login`: Login a user with email and password
+ - GET `/users/{id}`: Retrieve a user by id.
+ - PUT `/users/{id}`: Update a user's name or bio by id.
+ - DELETE `/users/{id}`: Delete a user by id.
 
 ### Posts Routes
- - POST /posts: Create a new post. The request should include the user_id.
- - GET /posts/{id}: Retrieve a post by id.
- - PUT /posts/{id}: Update a post's content by id.
- - DELETE /posts/{id}: Delete a post by id.
- - POST /posts/{id}/like: Increment the like count of a post by id.
- - POST /posts/{id}/unlike: Decrement the like count of a post by id. The count should not go below 0.
- - GET /analytics/posts: Retrieve the total number of posts.
- - GET /analytics/posts/top-liked: Retrieve the top 5 most liked posts.
+ - POST `/posts`: Create a new post. The request should include the user_id.
+ - GET `/posts/{id}`: Retrieve a post by id.
+ - PUT `/posts/{id}`: Update a post's content by id.
+ - DELETE `/posts/{id}`: Delete a post by id.
+ - POST `/posts/{id}/like`: Increment the like count of a post by id.
+ - POST `/posts/{id}/unlike`: Decrement the like count of a post by id. The count should not go below 0.
+
+### Admin Routes
+
+ 
+ To access admin routes you should login with following Emailid and password.
+ 
+ Email: admin_socailhive@gmail.com
+ Password: admin_socailhive_pass
+
+ - GET `/analytics/users`: Retrieve the total number of users.
+ - GET `/analytics/users/top-active`: Retrieve the top 5 most active users, based on the number of posts.
+ - GET `/analytics/posts`: Retrieve the total number of posts.
+ - GET `/analytics/posts/top-liked`: Retrieve the top 5 most liked posts.
