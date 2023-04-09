@@ -6,8 +6,8 @@ import SignupForm from './components/authentication/SignupForm';
 import Logout from './components/Logout';
 import Error from './components/Error';
 import Profile from './components/profile/Profile';
-import PostCard from './components/posts/PostCard';
 import Posts from './components/posts/Posts';
+import Admin from './components/admin/Admin';
 
 
 const router = createBrowserRouter([
@@ -38,6 +38,10 @@ const router = createBrowserRouter([
             },
         ]
     },
+    {
+    path:'/admin/sdfsdf82n0n0283nlsd',
+        element: <Admin />
+    }
 
 ])
 

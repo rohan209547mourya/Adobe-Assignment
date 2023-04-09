@@ -11,10 +11,7 @@ const Profile = () => {
     const [posts, setPosts] = useState([]);
     const [showPopUp, setShowPopup] = useState(false);
 
-    const handleCreateNewPost = () => {
-        console.log('Create new post')
-    }
-
+ 
 
     useEffect(() => {
 

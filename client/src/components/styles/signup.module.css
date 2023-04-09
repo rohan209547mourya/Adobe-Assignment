@@ -103,3 +103,43 @@ label {
 .form_btn:hover {
     background: #eb8406;
 }
+
+
+@media only screen and (max-width: 768px) {
+    .signupForm {
+        width: 60%;
+    }
+
+    .input_field {
+        width: 100%;
+    }
+
+    .form_btn {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .signupForm {
+        margin: 50px;
+        width: 80%;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-left: 10px;
+    }
+
+    .input_field {
+        width: 100%;
+        margin: 10px;
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    .form_btn {
+        width: 100%;
+    }
+}

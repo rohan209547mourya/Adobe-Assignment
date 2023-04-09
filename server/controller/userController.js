@@ -107,6 +107,7 @@ const loginUserHandler = async (req, res, next) => {
             user: {
                 _id: user._id,
                 name: user.name,
+                role: user.role,
                 email: user.email,
                 bio: user.bio,
                 profileImage: user.profileImage

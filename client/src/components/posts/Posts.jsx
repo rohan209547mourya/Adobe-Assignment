@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchFromAPI, createNewPost } from '../../helper/fetchFromAPI'
+import { fetchFromAPI } from '../../helper/fetchFromAPI'
 
 import classes from '../styles/posts.module.css'
 import PostCard from './PostCard';

@@ -42,7 +42,13 @@ const LoginForm = () => {
 
         if(res?.code === 200) {
             Cookie.set('x-auth-token', res.token);
-            navigate('/')
+            if(res.data.user.role === 'admin') {
+                navigate('/admin/sdfsdf82n0n0283nlsd')
+            }
+            else{
+                navigate('/')
+            }
+
         }
         else{
             showErrorMessage(res?.message);

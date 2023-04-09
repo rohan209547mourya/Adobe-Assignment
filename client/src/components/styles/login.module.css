@@ -65,8 +65,6 @@ label {
 
 .input:invalid {
     outline: 0;
-    /* color: #ff2300;
-    border-color: #ff2300; */
 }
 
 .input:focus,
@@ -101,4 +99,53 @@ label {
 
 .form_btn:hover {
     background: #eb8406;
+}
+
+
+@media screen and (max-width: 768px) {
+    .loginForm {
+        width: 70%;
+        margin-top: 15%;
+    }
+
+    .input_field {
+        width: 100%;
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    .form_btn {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .loginForm {
+        width: 90%;
+        margin-top: 20%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-left: 10px;
+    }
+
+    .input_field {
+        margin: 10px;
+    }
+
+    label {
+        font-size: 10px;
+    }
+
+    .input {
+        font-size: 14px;
+    }
+
+    .form_btn {
+        font-size: 14px;
+    }
 }
