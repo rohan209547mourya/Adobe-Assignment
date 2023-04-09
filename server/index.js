@@ -12,12 +12,10 @@ const adminRoutes = require('./routes/adminRoutes')
  * @description Middleware functions calls
  */
 app.use(express.json());
+app.use(cors());
 app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
 app.use('/analytics', adminRoutes);
-app.use(cors({
-    origin:"*"
-}));
 app.use(errorHandler);
 
 
@@ -71,4 +69,3 @@ app.listen(
     }
 )
 
-module.exports = app;

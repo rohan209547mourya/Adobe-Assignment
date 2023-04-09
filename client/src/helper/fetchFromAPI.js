@@ -1,13 +1,12 @@
 import Cookie from 'js-cookie'
 
 const URL = "https://adobe-assignment.onrender.com";
+// const URL = "http://localhost:8080";
 
 export const fetchFromAPI = async (path, method = 'GET', body = null, headers = null) => {
-
     try {
         const requestOptions = {
             method: method,
-            // mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
                 ...(headers || {})
@@ -16,13 +15,12 @@ export const fetchFromAPI = async (path, method = 'GET', body = null, headers = 
         };
 
         const response = await fetch(`${URL}/${path}`, requestOptions);
-        const data = await response.json()
+        const data = await response.json();
         return data;
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
     }
 };
-
 
 export const createNewPost = async (body, edit=false) => {  
 
