@@ -1,6 +1,7 @@
 const URL = "http://localhost:8080";
 
 export const fetchFromAPI = async (path, method = 'GET', body = null, headers = null) => {
+
     try {
         const requestOptions = {
             method: method,

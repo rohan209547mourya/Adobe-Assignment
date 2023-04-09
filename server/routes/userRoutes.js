@@ -45,7 +45,7 @@ router.get('/',authorizarion('user'), getUserByIdHandler);
  * @method PUT
  * @description Update user by id
  */
-router.put('/:id', updateUserHandler);
+router.put('/:id', authorizarion('user'),updateUserHandler);
 
 
 /**

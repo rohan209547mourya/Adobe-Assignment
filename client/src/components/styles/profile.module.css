@@ -68,7 +68,7 @@
     transition: 0.2s;
 }
 
-.btn:last-of-type {
+.btn:nth-child(2) {
     background: transparent;
     border-color: #f7a600;
     color: #f7a600;
@@ -127,6 +127,22 @@
     margin: auto;
 }
 
+.popupInner form input[type='text'] {
+
+    width: 70%;
+    height: 30px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+textarea {
+    resize: none;
+    width: 70%;
+    height: 70px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
 .popupInner input[type="file"] {
     margin-bottom: 10px;
 }
@@ -154,4 +170,60 @@
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.deleteBtn {
+    padding: 10px 25px;
+    border-radius: 3px;
+    border: 1px solid red;
+    font-weight: bold;
+    cursor: pointer;
+    color: red;
+    transition: 0.2s;
+}
+
+.deleteBtn:hover {
+    color: white;
+    background-color: red;
+}
+
+
+.setting {
+    display: flex;
+    flex-direction: column;
+}
+
+.setting button:last-of-type {
+    margin-top: 10px;
+    border: 1px solid #f7a600;
+    color: #f7a600;
+    transition: 0.2s;
+    border-radius: 2px;
+}
+
+
+.setting button:last-of-type:hover {
+    background-color: #f7a600;
+    color: white;
+}
+
+
+h3 span i:hover {
+    cursor: pointer;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease-in-out;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 10px;
+}
+
+.header div span i {
+    color: black;
+    font-size: 2rem;
 }

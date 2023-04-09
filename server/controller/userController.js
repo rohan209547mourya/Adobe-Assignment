@@ -1,3 +1,4 @@
+const mongoose  = require('mongoose');
 const { User, validateUser } = require('../model/UserModel');
 const bcrypt = require('bcrypt');
 
@@ -119,9 +120,23 @@ const loginUserHandler = async (req, res, next) => {
 // Add profile image handler
 const addProfileImageHandler = async (req, res, next) => {
     
-    const user = await User.findByIdAndUpdate(req.user._id, {
-        profileImage: req.body.profileImage
-    }, {new: true});
+    console.log(req);
+
+    let user = await User.findById(req.params.id);
+
+    if (!user) {
+        return res.status(404).json({
+            status: "Not Found",
+            code: 404,
+            message: "User not found"
+        })
+    }
+
+    user.profileImage = req.body.profileImage;
+    user.updated_at = new Date();
+
+
+    user = await user.save();
 
     res.status(200).json({
         message: "Profile image has been added successfully",
@@ -144,6 +159,8 @@ const getUserByIdHandler = async (req, res) => {
 
     const user = await User.findById(req.user._id);
 
+    console.log(user.profileImage);
+    
     res.status(200).json({
         message: "User has been fetched successfully",
         code: 200,
@@ -163,11 +180,69 @@ const getUserByIdHandler = async (req, res) => {
 
 // Update user handler
 const updateUserHandler = async (req, res) => {
+
+    const requestData = req.body;
+    const { id } = req.params;
+
+    let user = await User.findById(id);
+
+    if (!user) {
+        return res.status(404).json({
+            status: "Not Found",
+            code: 404,
+            message: "User not found"
+        })
+    }
+
+ 
+    if(requestData.bio !== null && requestData.bio !== undefined) {
+        user.bio = requestData.bio ;
+    } 
+
+    if(requestData.name !== null && requestData.bio !== undefined) {
+        user.name  = requestData.name;
+    } 
+
+    user.updated_at = new Date();
+    
+    user = await user.save();
+
+    res.status(200).json({
+        message: "User has been updated successfully",
+        code: 200,
+        data: {
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                bio: user.bio,
+                profileImage: user.profileImage
+            }
+        }
+    })
 }
 
 
 // Delete user by id handler
 const deleteUserByIdHandler = async (req, res) => {
+
+    const { id } = req.params;
+
+    const user = await User.findByIdAndDelete(id);
+
+    if (!user) {
+        return res.status(404).json({
+            status: "Not Found",
+            code: 404,
+            message: "User not found"
+        })
+    }
+
+    res.status(200).json({
+        message: "User has been deleted successfully",
+        code: 200,
+    })
+
 }
 
 

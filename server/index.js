@@ -12,21 +12,41 @@ const cors = require('cors')
 app.use(express.json());
 app.use(cors());
 app.use('/users', userRoutes);
+app.use(errorHandler);
 
 
 
 
 
-process.on('uncaughtException', (err) => {
-    console.error('An uncaught error occurred:', err);
+process.on('uncaughtException', (reason, promise) => {
+    console.error('An uncaught error occurred:', promise, 'Reason:', reason);
+    express.response.status(500).json({
+        status: "Internal Server Error",
+        code: 500,
+        message: "Something went wrong! please try again"
+    })
     process.exit(1);
 });
 
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('An unhandled promise rejection occurred:',  promise, 'Reason:', reason);
+    express.response.status(500).json({
+        status: "Internal Server Error",
+        code: 500,
+        message: "Something went wrong! please try again"
+    })
+    process.exit(1);
+});
+
+function errorHandler(err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).json({
+        message: 'Internal Server Error',
+        error: err.message || 'An error occurred while processing your request! please try again'
+    });
+}
   
-process.on('unhandledRejection', (err) => {
-    console.error('An unhandled promise rejection occurred:', err);
-    process.exit(1);
-});
   
 
 

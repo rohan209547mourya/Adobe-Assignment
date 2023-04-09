@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import classes from '../styles/profile.module.css'
-import Spinner from './Spinner';
 import { fetchFromAPI } from '../../helper/fetchFromAPI'
 import Cookies from 'js-cookie'
+import ChangeImagePopUp from './ChangeImagePopUp';
+import EditDetailsPopUp from './EditDetailsPopUp';
+import { useNavigate } from 'react-router-dom';
 
 
 const ProfileCard = () => {
 
-   
+    const navigate = useNavigate();
     const [showPopup, setShowPopup] = useState(false);
-    const [image, setImage] = useState(null);
+    const [showPopup1, setShowPopup1] = useState(false);
     const [imageUrl, setImageUrl] = useState("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNr-hLDsgpEryNGNOs_yJIg4lYCqjBS_ck5dMDD5kBUw&usqp=CAU&ec=48665699");
-    const [isLoading, setIsLoading] = useState(false);
+    const [showSetting, setShowSetting] = useState(false);
+
 
     const [user, setUser] = useState({
         id: null,
@@ -22,56 +25,29 @@ const ProfileCard = () => {
     })
 
 
-  
-    const handleImageChange = async (event) => {
-        event.preventDefault();
+    const handleDeleteAccount = async () => {
 
-        const file = event.target.files[0];
-        if (file && (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg')) {
-            setImage(file);
+        const isSure = window.confirm("Are you are? You want to delete your account?");
+
+        if (!isSure) {
+
+            setShowSetting(false);
         }
-    }
+        else{
 
-
-    const sendImageUpdateRequest = async () => {
-        const res = await fetchFromAPI('users/sdfhlsd/profile-image', 'PUT', {
-            profileImage: imageUrl
-        }, {
-            'Content-Type': 'application/json',
-            'x-auth-token' : Cookies.get('x-auth-token')
-        })
-    }
-
-
-    const handleSubmit = async (event) => {
-
-        event.preventDefault();
-        setIsLoading(true);
-
-        const data = new FormData();
-        data.append('file', image);
-        data.append('upload_preset', 'profile');
-        data.append('cloud_name', 'ddo7x0lvr');
-
-        const response = await fetch('https://api.cloudinary.com/v1_1/ddo7x0lvr/image/upload', {
-                method: 'POST',
-                body: data
+            const res = await fetchFromAPI(`users/${user.id}`, 'DELETE', null, {
+                'x-auth-token': Cookies.get('x-auth-token')
             })
-        
-        response.json()
-            .then(res => {
-                setImageUrl(res.url);
-
-                sendImageUpdateRequest();
-                
-                setIsLoading(false);
-                setShowPopup(false);
-            })
-            .catch(err => {
-                console.log(err);
+    
+            if (res.code === 200) {
+                Cookies.remove('x-auth-token');
+                navigate('/')
             }
-        )
+        }
+
+
     }
+
 
 
     useEffect(() => {
@@ -95,7 +71,7 @@ const ProfileCard = () => {
         }
 
         fetchUserData();
-    }, [])
+    }, [setUser])
 
 
     return (
@@ -106,30 +82,44 @@ const ProfileCard = () => {
                 </div>
                 <div className={classes.info}>
                     <div>
-                        <h3 className={classes.profile_name}>{ user.name || "James Carson"} {"    "} <span><i class="fa-solid fa-gear"></i></span></h3>
+                        <h3 className={classes.profile_name}>{ user.name || "James Carson"} {"    "} 
+                            <span onClick={() => setShowSetting(!showSetting)}>
+                                <i className="fa-solid fa-gear"></i>
+                            </span>
+                        </h3>
                     </div>
                     <div>
                         <p className={classes.about}>{user.bio || "Add Your Bio"}</p>
                     </div>
-                    <div>
-                        <button className={classes.btn}>Edit Profile</button>
+                    <div >
+                        <button className={classes.btn} onClick={() => setShowPopup1(true)}>Edit Profile</button>
                         <button className={classes.btn} onClick={() => setShowPopup(true)}>Change Image</button>
                     </div>
                 </div>
                 {
-                    showPopup && (
+                    showPopup && <ChangeImagePopUp user={user} setShowPopup={setShowPopup} setImageUrl={setImageUrl}/>
+                }
+                {
+                    showPopup1 && <EditDetailsPopUp fetchFromAPI={fetchFromAPI} user={user} setUser={setUser} setShowPopup1={setShowPopup1}/>
+                }
+            </div>
+
+            {
+                showSetting && (
                     <div className={classes.popup}>
                         <div className={classes.popupInner}>
-                            <h3>Upload Image</h3>
-                            <form>
-                                <input type="file" onChange={handleImageChange} required/>
-                                <button className={classes.btn_popup} onClick={handleSubmit}> {isLoading ? <Spinner /> : 'Submit'}</button>
-                            </form>
-                            <button className={classes.close_btn} onClick={() => setShowPopup(false)}>Close</button>
+                            <div className={classes.setting}>
+                                <button className={classes.deleteBtn} onClick={handleDeleteAccount}>
+                                    Delete Account
+                                </button>
+                                <button onClick={() => setShowSetting(!showSetting)}>
+                                    Cancel
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                )}
-            </div>
+                    </div> 
+                )
+            }
         </>
     )
 }
