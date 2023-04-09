@@ -106,7 +106,7 @@ const PostCard = ({ post }) => {
         <div>
           <div>
             <div className={classes.avatar}>
-              <img src={post.user_id.profileImage} alt="avatar" />
+              <img src={post.user_id.profileImage || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNr-hLDsgpEryNGNOs_yJIg4lYCqjBS_ck5dMDD5kBUw&usqp=CAU&ec=48665699"} alt="avatar" />
             </div>
             <div className={classes.username}>
               <h3>{post.user_id.name}</h3>
