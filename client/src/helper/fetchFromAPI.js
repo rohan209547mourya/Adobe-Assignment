@@ -1,6 +1,6 @@
 import Cookie from 'js-cookie'
 
-const URL = "https://adobe-assignment.onrender.com/";
+const URL = "https://adobe-assignment.onrender.com";
 
 export const fetchFromAPI = async (path, method = 'GET', body = null, headers = null) => {
 
