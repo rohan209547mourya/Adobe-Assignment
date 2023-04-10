@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CreatePostPopUp from '../posts/CreatePostPopUp';
 import { fetchFromAPI } from '../../helper/fetchFromAPI';
 import Cookies from 'js-cookie';
+import moment from 'moment'
 
 const PostCard = ({ post, setPosts , posts }) => {
 
@@ -45,6 +46,37 @@ const PostCard = ({ post, setPosts , posts }) => {
         }
     }
 
+    const formatTimeAgo = (dateString) => {
+    
+        const date = moment(dateString);
+        const now = moment();
+        const diff = now.diff(date);
+        const duration = moment.duration(diff);
+        const years = duration.years();
+        const months = duration.months();
+        const days = duration.days();
+        const hours = duration.hours();
+        const minutes = duration.minutes();
+    
+        if (years > 0) {
+          return years + " year" + (years === 1 ? "" : "s") + " ago";
+        } 
+        else if (months > 0) {
+          return months + " month" + (months === 1 ? "" : "s") + " ago";
+        } 
+        else if (days > 0) {
+          return days + " day" + (days === 1 ? "" : "s") + " ago";
+        } 
+        else if (hours > 0) {
+          return hours + " hour" + (hours === 1 ? "" : "s") + " ago";
+        } 
+        else if (minutes > 0) {
+          return minutes + " minute" + (minutes === 1 ? "" : "s") + " ago";
+        } 
+        else {
+          return "just now";
+        }
+      }
     
 
   return (
@@ -57,7 +89,7 @@ const PostCard = ({ post, setPosts , posts }) => {
                 </div>
                 <div className={classes.username}>
                     <h3>{post.user_id.name}</h3>
-                    <p>an hour ago</p>
+                    <p>{formatTimeAgo(post.created_at)}</p>
                 </div>
                 </div>
             </div>

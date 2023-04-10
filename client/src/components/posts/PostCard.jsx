@@ -5,6 +5,8 @@ import Cookie from 'js-cookie'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
+
 
 
 const PostCard = ({ post }) => { 
@@ -62,6 +64,38 @@ const PostCard = ({ post }) => {
     
   }
 
+  const formatTimeAgo = (dateString) => {
+    
+    const date = moment(dateString);
+    const now = moment();
+    const diff = now.diff(date);
+    const duration = moment.duration(diff);
+    const years = duration.years();
+    const months = duration.months();
+    const days = duration.days();
+    const hours = duration.hours();
+    const minutes = duration.minutes();
+
+    if (years > 0) {
+      return years + " year" + (years === 1 ? "" : "s") + " ago";
+    } 
+    else if (months > 0) {
+      return months + " month" + (months === 1 ? "" : "s") + " ago";
+    } 
+    else if (days > 0) {
+      return days + " day" + (days === 1 ? "" : "s") + " ago";
+    } 
+    else if (hours > 0) {
+      return hours + " hour" + (hours === 1 ? "" : "s") + " ago";
+    } 
+    else if (minutes > 0) {
+      return minutes + " minute" + (minutes === 1 ? "" : "s") + " ago";
+    } 
+    else {
+      return "just now";
+    }
+  }
+  
   
 
   const handleDisLikeAction = async () => {
@@ -96,9 +130,9 @@ const PostCard = ({ post }) => {
         position: toast.POSITION.TOP_CENTER,
       }
     ) ;
-
   }
 
+  console.log(post);
 
   return (
     <div className={classes.card}>
@@ -110,7 +144,7 @@ const PostCard = ({ post }) => {
             </div>
             <div className={classes.username}>
               <h3>{post.user_id.name}</h3>
-              <p>an hour ago</p>
+              <p>{formatTimeAgo(post.created_at)}</p>
             </div>
           </div>
         </div>
